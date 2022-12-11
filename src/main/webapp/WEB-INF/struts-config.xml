@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+    <global-forwards>
+        <!-- Default forward to "Welcome" action -->
+        <!-- Demonstrates using index.jsp to forward -->
+        <forward
+            name="welcome"
+            path="/Welcome.do"/>
+    </global-forwards>
+
+
+<!-- =========================================== Action Mapping Definitions -->
+
+    <action-mappings>
+            <!-- Default "Welcome" action -->
+            <!-- Forwards to Welcome.jsp -->
+        <action
+            path="/Welcome"
+            forward="/pages/Welcome.jsp"/>
+
+
+		<action
+           path="/deletebook"
+           type="mystruts.DeleteBookAction">
+           <forward name="success" path="/Delete_Confirm.jsp" />
+           <forward name="failure" path="/DeleteBook.jsp" />
+        </action>
+         
+        <action
+            path="/addbook"
+            type="mystruts.AddBookAction">
+            <forward name="success" path="/AddBook_Thanks.jsp" />
+            <forward name="failure" path="/AddBook.jsp" />
+         </action>
+
+		
+         
+        <action
+            path="/displaybook"
+            type="mystruts.DisplayBookAction">
+            <forward name="success" path="/DisplayBook.jsp" />
+            <forward name="failure" path="/AddBook.jsp" />
+         </action>
+
+
+    </action-mappings>
+
+    <message-resources parameter="MessageResources" />
+
+</struts-config>
